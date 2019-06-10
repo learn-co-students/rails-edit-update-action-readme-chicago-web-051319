@@ -20,4 +20,15 @@ class ArticlesController < ApplicationController
   end
 
   # add edit and update methods here
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  #Do not forgot that I need to specify path in controller, not at form or show.
+  def update
+    @article = Article.find(params[:id])
+    @article.update(title: params[:article][:title], description: params[:article][:description])
+    redirect_to article_path(@article)
+  end
+
 end
